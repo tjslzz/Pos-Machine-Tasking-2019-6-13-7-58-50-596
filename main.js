@@ -41,7 +41,10 @@ function countPriceByBarcodes (barcodes,database){
     return printInfo;
 }
 
-function printReceiptsByBarcodes(printInfo){
+function printReceiptsByBarcodes(printInfo,isBarcodesValid){
+    if(!isBarcodesValid){
+        return "[ERROR]:";
+    }
     var sum = 0;
     var msg = "Receipts\n------------------------------------------------------------\n";
     for(let i in printInfo){

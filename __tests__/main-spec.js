@@ -23,7 +23,11 @@ it ('should print false when call isBarcodesValid given test_items', () => {
 });
 
 it ('should print receipts when call printReceiptsByBarcodes given items', () => {
-    expect(Pos_Machine.printReceiptsByBarcodes(Pos_Machine.countPriceByBarcodes(items,database)))
+    expect(Pos_Machine.printReceiptsByBarcodes(Pos_Machine.countPriceByBarcodes(items,database),Pos_Machine.isBarcodesValid(items,database)))
     .toBe("Receipts\n------------------------------------------------------------\nCoca Cola 3 1\nPepsi-Cola 5 2\nDr Pepper 7 1\n------------------------------------------------------------\nPrice: 20");
+});
+
+it ('should print [ERROR]: when call printReceiptsByBarcodes given test_items', () => {
+    expect(Pos_Machine.printReceiptsByBarcodes(Pos_Machine.countPriceByBarcodes(test_items,database),Pos_Machine.isBarcodesValid(test_items,database))).toBe("[ERROR]:");
 });
 
